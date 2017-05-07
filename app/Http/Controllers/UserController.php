@@ -77,8 +77,13 @@ class UserController extends Controller
         return redirect()->route('user.show');
     }
 
-    public function showProfile($id){
-        $user = User::find($id);
+//    public function showProfile($id){
+//        $user = User::find($id);
+//        return view('profile', ['user' => $user]);
+//    }
+    public function showProfile($username){
+       $user = User::where('username', '=', $username)->first();
+
         return view('profile', ['user' => $user]);
     }
 
@@ -90,7 +95,7 @@ class UserController extends Controller
 
     public function update(Request $request){
         $fields = array('name', 'phone', 'email', 'password');
-
+//        return dd($request);
         $user = User::find($request->id);
         forEach($fields as $field) {
             if ($request[$field]) {

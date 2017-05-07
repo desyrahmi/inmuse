@@ -46,6 +46,7 @@
 							</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
 			<div class="row">
@@ -105,17 +106,19 @@
 					</table>
 
 				</div>
-
-				<div class="span8">
+				<div class="span1"></div>
+				<div class="span7">
 					<h4>Review</h4>
 
 					<div class="row pb-cmnt-container" style="margin-top: 0px;">
 						<div class="span7">
 							<div class="panel panel-info">
 								<div class="panel-body">
-									<textarea style="width: 100%;" placeholder="Write your review here!" class="pb-cmnt-textarea"></textarea>
-									<form class="form-inline">
-										<button class="btn btn-primary pull-right" type="button">Share</button>
+									<form action="" method="post">
+										<textarea style="width: 100%;" placeholder="Write your review here!" class="pb-cmnt-textarea" name="comment"></textarea>
+										<form class="form-inline">
+											<button class="btn btn-primary pull-right" type="button">Share</button>
+										</form>
 									</form>
 								</div>
 							</div>
@@ -125,7 +128,7 @@
 					<div class="panel panel-white post panel-shadow">
 						<div class="post-heading">
 							<div class="pull-left image">
-								<img src="{{URL::asset('img/kamargelap.jpg')}}" class="img-circle avatar" alt="user profile image" height="250px" width="250px">
+								<img src="{{URL::asset('img/1.jpg')}}" class="img-circle avatar" alt="user profile image" height="250px" width="250px">
 							</div>
 							<div class="pull-left meta">
 								<div class="title h5">
@@ -142,7 +145,7 @@
 					<div class="panel panel-white post panel-shadow">
 						<div class="post-heading">
 							<div class="pull-left image">
-								<img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+								<img src="{{URL::asset('img/1.jpg')}}" class="img-circle avatar" alt="user profile image">
 							</div>
 							<div class="pull-left meta">
 								<div class="title h5">

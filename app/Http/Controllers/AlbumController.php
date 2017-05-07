@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Album;
+use App\Role;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -51,7 +52,7 @@ class AlbumController extends Controller
 
     public function index(){
         $albums = Album::get();
-        return view('album',['albums' => $albums]);
+        return view('listalbum',['albums' => $albums]);
     }
 
     public function delete($id){

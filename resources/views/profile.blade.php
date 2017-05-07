@@ -22,6 +22,9 @@
                                     Edit Profile
                                 </button>
                             </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-inverse"><a href="{{route('list.album')}}">List Album</a></button>
+                            </div>
                         </div>
                     </div>
                 </div>

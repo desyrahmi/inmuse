@@ -1257,3 +1257,15 @@ figure.effect-zoe:hover p.icon-links a:first-child {
   border-radius: 0px;
 }
 
+.pb-cmnt-container {
+  font-family: Lato;
+  margin-top: 40px;
+}
+
+.pb-cmnt-textarea {
+  resize: none;
+  padding: 20px;
+  height: 130px;
+  width: 100%;
+  border: 1px solid #F2F2F2;
+}

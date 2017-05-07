@@ -31,7 +31,7 @@
                             <li><a class="icon-signin" href="#0" data-toggle="modal" data-target="#loginModal"> Login</a></li>
                             <li><a class="icon-user" href="{{route('auth.register')}}"> Register</a></li>
                         @else
-                            <li><a href="{{route('user.profile', ['id' => Auth::user()->id])}}"> Profil</a></li>
+                            <li><a href="{{route('user.profile', ['username' => Auth::user()->username])}}"> Profil</a></li>
                             <li><a class="icon-signout" href="{{route('auth.doLogout')}}"> Logout</a></li>
                         @endif
                     </ul>
