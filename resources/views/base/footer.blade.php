@@ -8,7 +8,7 @@
 				<li><a href="#"><i class="icon-circled icon-bgdark icon-dribbble icon-2x"></i></a></li>
 				<li><a href="pinterest.com"><i class="icon-circled icon-bgdark icon-pinterest icon-2x"></i></a></li>
 			</ul>
-			<p class="copyright">
+			<p>
 				&copy; 2017 InMuSe | Desy Nurbaiti | Rizky Fenaldo | Raras Anggita | Glleen Allan 
 			</p>
 		</div>

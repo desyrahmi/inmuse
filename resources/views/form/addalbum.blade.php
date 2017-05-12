@@ -25,26 +25,27 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-11">
-                                <form role="form">
+                                <form role="form" action="{{route('add.album')}}" method="post">
+                                    {{csrf_field()}}
                                     <div class="form-group">
                                         <label>Artist</label>
-                                        <input class="form-control" placeholder="Artist">
+                                        <input class="form-control" placeholder="Artist" name="artist">
                                     </div>
                                     <div class="form-group">
                                         <label>Title</label>
-                                        <input class="form-control" placeholder="Title">
+                                        <input class="form-control" placeholder="Title" name="title">
                                     </div>
                                     <div class="form-group">
                                         <label>Release Date</label>
-                                        <input class="form-control" placeholder="Release Date">
+                                        <input class="form-control" placeholder="Release Date" name="release" type="date">
                                     </div>
                                     <div class="form-group">
                                         <label>Overview</label>
-                                        <textarea class="form-control" rows="3" placeholder="Overview"></textarea>
+                                        <textarea class="form-control" rows="3" placeholder="Overview" name="review"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Cover</label>
-                                        <input type="file">
+                                        <input type="file" name="photo">
                                     </div>
                                     <button type="submit" class="btn btn-default">Submit Button</button>
                                     <button type="reset" class="btn btn-default">Reset Button</button>

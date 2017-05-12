@@ -8,7 +8,7 @@ class Song extends Model
 {
     protected $table = 'songs';
     protected $dates = ['created_at','updated_at'];
-    protected $fillable = ['name', 'duration'];
+    protected $fillable = ['title', 'duration'];
 
     public function album(){
         return $this->belongsTo('App\Photo','album_id','id');

@@ -15,7 +15,7 @@ class CreateAlbumsTable extends Migration
         if(!(Schema::hasTable('albums'))){
             Schema::create('albums', function(Blueprint $table){
                 $table->increments('id');
-                $table->string('name');
+                $table->string('title');
                 $table->string('review');
                 $table->date('release');
                 $table->string('artist');
@@ -33,6 +33,6 @@ class CreateAlbumsTable extends Migration
      */
     public function down()
     {
-        //
+//        Schema::drop('albums');
     }
 }

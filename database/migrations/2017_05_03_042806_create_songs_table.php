@@ -15,7 +15,7 @@ class CreateSongsTable extends Migration
         if(!(Schema::hasTable('songs'))){
             Schema::create('songs', function(Blueprint $table){
                 $table->increments('id');
-                $table->string('name');
+                $table->string('title');
                 $table->string('duration');
                 $table->integer('album_id')->unsigned();
                 $table->foreign('album_id')->references('id')->on('albums');

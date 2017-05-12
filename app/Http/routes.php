@@ -28,11 +28,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/user/edit/{id}', ['uses' => 'UserController@update', 'as' => 'user.edit']);
     Route::get('/logout', ['uses' => 'AuthController@doLogout', 'as' => 'auth.doLogout']);
     Route::get('/list-album', ['uses' => 'AlbumController@index', 'as' => 'list.album']);
+    Route::get('/add-album', ['uses' => 'AlbumController@addIndex', 'as' => 'add.album.index']);
+    Route::post('/add-album', ['uses' => 'AlbumController@create', 'as' => 'add.album']);
 
     Route::group(['middleware' => ['role:Administrator']], function () {
         Route::get('/user', ['uses' => 'UserController@index', 'as' => 'user.show']);
         Route::get('/user/add', ['uses' => 'UserController@addIndex', 'as' => 'user.add.index']);
         Route::get('/user/delete/{id}', ['uses' => 'UserController@delete', 'as' => 'user.delete']);
+
     });
 
 });

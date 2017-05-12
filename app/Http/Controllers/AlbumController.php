@@ -16,37 +16,49 @@ use Hash;
 class AlbumController extends Controller
 {
     public function addIndex(){
-        return view('form.album');
+        return view('form.addalbum');
     }
 
-    public function create(){
-//        dd(Auth::user()->id);
+    public function create(Request $request){
         $rules = array(
-            'name' => 'required',
-            'review' => 'required'
+            'title' => 'required',
+            'review',
+            'artist' => 'required',
+            'release'
         );
 
-        $validator = Validator::make(Input::all(), $rules);
+        $validator = Validator::make($request, $rules);
 
         if($validator->fails()){
             Session::flash('fail','Gagal menambahkan album');
-            return redirect()->route('album.add.index');
+            return redirect()->route('add.album.index');
         }
 
-        $data = Input::all();
-
+        //
         $album = new Album();
-        $album->name = $data['name'];
-        $album->review = $data['review'];
-        // $album->photo_id = $data['description'];
-        // $album->user_id = Auth::user()->id;
+        $album->title = $request['title'];
+        $album->review = $request['review'];
+        $album->artist = $request['artist'];
+        $album->release = $request['release'];
+        $album->save();
+
+        if ($request->photo !== null) {
+            $photoName = 'album_'.$album->id . '.jpg';
+            $photo = new Photo();
+            $photo->name = $photoName;
+            $photo->extension = 'jpg';
+            $photo->save();
+            $request->photo->move(public_path('img'), $photoName);
+            $album->photo_id = $photo->id;
+            $album->save();
+        }
 
         if($album->save()){
             Session::flash('success', 'album berhasil ditambahkan');
-            return redirect()->route('album.add.index');
+            return redirect()->route('list.album');
         } else {
             Session::flash('fail', 'Gagal menambahkan album');
-            return redirect()->route('album.add.index');
+            return redirect()->route('add.album.index');
         }
     }
 
