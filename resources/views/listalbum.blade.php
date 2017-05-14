@@ -7,103 +7,44 @@
 @endsection
 
 @section('content')
-
-    <div id="page-wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Album</h1>
+    <section class="content-header">
+        <h1>
+            List Album
+            <small>Control panel</small>
+        </h1>
+        <br>
+        <div class="container">
+            <div class="panel-body" style="width: 95%;">
+                <table width="100%" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th class="text-center">ID</th>
+                        <th class="text-center">Title</th>
+                        <th class="text-center">Artist</th>
+                        <th class="text-center">Rating</th>
+                        <th colspan="2" class="text-center">Menu</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center">1</td>
+                        <td>Sinestesia</td>
+                        <td>Efek Rumah Kaca</td>
+                        <td>4.5</td>
+                        <td class="text-center">Edit</td>
+                        <td class="text-center">Delete</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">2</td>
+                        <td>Sinestesia</td>
+                        <td>Efek Rumah Kaca</td>
+                        <td>4.5</td>
+                        <td class="text-center">Edit</td>
+                        <td class="text-center">Delete</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        List Album
-                    </div>
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">
-                        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                            <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Cover</th>
-                                <th>Title</th>
-                                <th>Artist</th>
-                                <th>Release Date</th>
-                                <th>Rating</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                            <tr>
-                                <td>Misc</td>
-                                <td>Dillo 0.8</td>
-                                <td>Embedded devices</td>
-                                <td>Embedded devices</td>
-                                <td>Embedded devices</td>
-                                <td>Misc</td>
-                            </tr>
-                            <tr>
-                                <td>Misc</td>
-                                <td>Dillo 0.8</td>
-                                <td>Embedded devices</td>
-                                <td>Embedded devices</td>
-                                <td>Embedded devices</td>
-                                <td>Misc</td>
-                            </tr>
-                            <tr>
-                                <td>Misc</td>
-                                <td>Dillo 0.8</td>
-                                <td>Embedded devices</td>
-                                <td>Embedded devices</td>
-                                <td>Embedded devices</td>
-                                <td>Misc</td>
-                            </tr>
-                            <tr>
-                                <td>Misc</td>
-                                <td>Dillo 0.8</td>
-                                <td>Embedded devices</td>
-                                <td>Embedded devices</td>
-                                <td>Embedded devices</td>
-                                <td>Misc</td>
-                            </tr>
-                            <tr>
-                                <td>Misc</td>
-                                <td>Dillo 0.8</td>
-                                <td>Embedded devices</td>
-                                <td>Embedded devices</td>
-                                <td>Embedded devices</td>
-                                <td>Misc</td>
-                            </tr>
-                            <tr>
-                                <td>Misc</td>
-                                <td>Dillo 0.8</td>
-                                <td>Embedded devices</td>
-                                <td>Embedded devices</td>
-                                <td>Embedded devices</td>
-                                <td>Misc</td>
-                            </tr>
-
-
-
-
-                            </tbody>
-                        </table>
-
-                    </div>
-                    <!-- /.panel-body -->
-                </div>
-                <!-- /.panel -->
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-    </div>
-    <!-- /#page-wrapper -->
-    <!--  <script>
-     $(document).ready(function() {
-         $('#dataTables-example').DataTable({
-             responsive: true
-         });
-     });
-     </script> -->
+    </section>
 @endsection

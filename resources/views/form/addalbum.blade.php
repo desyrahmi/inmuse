@@ -7,63 +7,32 @@
 @endsection
 
 @section('content')
-
-    <div id="page-wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Add Album</h1>
+    <div class="col-xs-8">
+        <form action="" role="form">
+            <div class="form-group">
+                <label>Artist</label>
+                <input type="text" class="form-control" name="artist" placeholder="Artist">
             </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-lg-7">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <!-- Basic Form Elements -->
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-11">
-                                <form role="form" action="{{route('add.album')}}" method="post">
-                                    {{csrf_field()}}
-                                    <div class="form-group">
-                                        <label>Artist</label>
-                                        <input class="form-control" placeholder="Artist" name="artist">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Title</label>
-                                        <input class="form-control" placeholder="Title" name="title">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Release Date</label>
-                                        <input class="form-control" placeholder="Release Date" name="release" type="date">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Overview</label>
-                                        <textarea class="form-control" rows="3" placeholder="Overview" name="review"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Cover</label>
-                                        <input type="file" name="photo">
-                                    </div>
-                                    <button type="submit" class="btn btn-default">Submit Button</button>
-                                    <button type="reset" class="btn btn-default">Reset Button</button>
-                                </form>
-                            </div>
-
-                            <!-- /.col-lg-6 (nested) -->
-                        </div>
-                        <!-- /.row (nested) -->
-                    </div>
-                    <!-- /.panel-body -->
-                </div>
-                <!-- /.panel -->
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="form-control" name="title" placeholder="Title">
             </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
+            <div class="form-group">
+                <label>Release Date</label>
+                <input type="date" class="form-control" name="date">
+            </div>
+            <div class="form-group">
+                <label>Overview</label>
+                <textarea name="review" class="form-control" cols="30" rows="3" placeholder="Overview"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Cover</label>
+                <input type="file" name="photo">
+            </div>
+            <button type="submit" class="btn btn-default">Add Album</button>
+            <button type="reset" class="btn btn-default" style="margin-left: 10px">Cancel</button>
+        </form>
     </div>
-    <!-- /#page-wrapper -->
+@endsection
 
 @endsection

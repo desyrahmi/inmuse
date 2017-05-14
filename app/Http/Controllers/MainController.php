@@ -2,24 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use Illuminate\Http\Request;
+use App\Http\Requests;
+
+//use App\User;
+use App\Role;
 use App\Album;
 use App\Review;
-use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
+
 use Validator;
 use Session;
 use Hash;
-use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
     public function index(){
         $albums = Album::get();
         return view('index',['albums' => $albums]);
+    }
+
+    public function adminIndex(){
+        return view('dashboard');
     }
 
 //    public function showAlbum($id){

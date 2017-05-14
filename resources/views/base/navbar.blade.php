@@ -1,84 +1,95 @@
-<div class="navbar-wrapper">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <!-- Responsive navbar -->
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                </a>
-            {{--<h1 class="brand"><a href="#">InMuSe</a></h1>--}}
-            <!-- navigation -->
-                <nav class="pull-left nav-collapse collapse">
-                    <ul id="menu-main" class="nav">
-                        <li><a href="{{route('index')}}"><img src="{{URL::asset('img/logo-putih.png')}}" width="75px" height="53px"></a></li>
-                        <li><a href="{{route('discover')}}">Discover</a></li>
-                        <li><a href="{{route('people')}}">People</a></li>
-                    </ul>
-                </nav>
-                <!-- <div class="col-sm-3 col-md-3"> -->
-
-                <!-- </div> -->
-                <nav class="pull-right nav-collapse collapse">
-                    <ul id="menu-main" class="nav">
-                        <li>
-                            <form class="navbar-form" role="search">
-                                <div class="input-group">
-                                    <input style="margin-top: 7px; border-radius: 0px" type="text" class="form-control" placeholder="Search" name="search">
-                                </div>
-                            </form>
-                        </li>
-                        <li><button style="margin-top: 5px; padding: 3px" class="btn btn-default" type="submit"><i class="icon-search"></i></button></li>
-                    @if(!Auth::check())
-                            <li><a class="icon-signin" href="#0" data-toggle="modal" data-target="#loginModal"> Login</a></li>
-                            <li><a class="icon-user" href="{{route('auth.register')}}"> Register</a></li>
-                        @else
-                            <li><a href="{{route('user.profile', ['username' => Auth::user()->username])}}"> Profil</a></li>
-                            <li><a class="icon-signout" href="{{route('auth.doLogout')}}"> Logout</a></li>
-                        @endif
-                    </ul>
-                </nav>
-            </div>
-        </div>
+<nav class="navbar navbar-static-top" role="navigation">
+    <div class="navbar-left col-xs-5">
+        <ul class="nav navbar-nav">
+            <li><a href="{{route('index')}}"><img src="{{URL::asset('img/logo-putih.png')}}" width="60px" height="38px"></a></li>
+            <li><a href="{{route('discover')}}" style="margin-top: 5px;">Discover</a></li>
+            <li><a href="{{route('people')}}" style="margin-top: 5px;">People</a></li>
+        </ul>
     </div>
-</div>
-
-<!-- =========================== 
-      MODAL BARU 
-================================ -->
-
-<!-- line modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title" id="lineModalLabel">Login</h3>
-                <img src="{{URL::asset('img/logo-hitam.png')}}" width="255px" height="129px">
-            </div>
-            <div class="modal-body">
-
-                <!-- content goes here -->
-                <form method="post" action="{{route('auth.doLogin')}}">
-                    {{csrf_field()}}
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Username or Email</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="user" placeholder="Username or Email Address">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-info" type="submit">Login</button>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group btn-group-justified" role="group" aria-label="group button">
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Cancel</button>
-                    </div>
+    <div class="navbar-right col-xs-7">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-4" style="margin-top: 5px;">
+            <form action="#" method="get" class="sidebar-form">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Search..."/>
+                    <span class="input-group-btn">
+                            <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                        </span>
                 </div>
-            </div>
+            </form>
+        </div>
+        <div class="col-xs-6" style="margin-top: 5px;">
+            <ul class="nav navbar-nav">
+                <!-- User Account: style can be found in dropdown.less -->
+                @if(!Auth::check())
+                    <li>
+                        <a href="#" id="myBtn" class="">
+                                <i class="glyphicon glyphicon-log-in">&nbsp;Sign In</i>
+                            </a>
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <span class="close">&times;</span>
+                                    <h2>Sign in</h2>
+                                </div>
+                                <form action="{{route('auth.doLogin')}}" method="post">
+                                    {{csrf_field()}}
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Username or Email Address</label><br>
+                                            <input type="text" class="form-control" name="user" placeholder="Username or Email Address">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Password</label><br>
+                                            <input type="password" class="form-control" name="password" placeholder="Password">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="pull-right">
+                                            <button class="btn btn-info glyphicon glyphicon-log-in">&nbsp;Sign in</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li class="">
+                        <a href="{{route('auth.register')}}" class="">
+                            <i class="glyphicon glyphicon-user">&nbsp;Sign Up</i>
+                        </a>
+                    </li>
+                @else
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            {{--<span>{{$user->name}}&nbsp;<i class="caret"></i></span>--}}
+                            <span>NAMA&nbsp;<i class="caret"></i></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header bg-light-blue">
+                                <img src="{{URL::asset('img/'.Auth::user()->id.'.jpg')}}" class="img-circle" alt="User Image" />
+                                <p>
+                                    {{--{{$user->name}}--}}NAMA
+                                    <small>Member since ...</small>
+                                </p>
+                            </li>
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="{{route('user.profile', ['username' => Auth::user()->username])}}" class="btn btn-default btn-flat">Profile</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="{{route('auth.doLogout')}}" class="btn btn-default btn-flat">
+                                        <i class="glyphicon glyphicon-log-out"></i>&nbsp;Sign out
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+            </ul>
         </div>
     </div>
-</div>
+</nav>

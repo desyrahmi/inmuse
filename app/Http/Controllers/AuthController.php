@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 
 use Auth;
 use Validator;
+use Hash;
 
 class AuthController extends Controller
 {
@@ -28,7 +29,7 @@ class AuthController extends Controller
             'password' => 'required'
         );
 
-        $validator = Validator::make(Input::all(), $rules);
+        $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
             echo 'gagal lewat validator';
             return view('index')
@@ -36,16 +37,22 @@ class AuthController extends Controller
                 ->withInput(Input::except('password'));
         } else {
             $userdata = array(
-                'user' => Input::get('user'),
-                'password' => Input::get('password')
+                'user' => $request->input('user'),
+                'password' => Hash::make($request->input('password'))
             );
 
             if (Auth::attempt(array('email' => $userdata['user'], 'password' => $userdata['password']), true)) {
-                echo 'berhasil login';
-                return redirect()->route('index');
+                $role = Auth::user()->role_id;
+                if($role==1)
+                    return redirect()->route('admin.index');
+                else if($role==2)
+                    return redirect()->route('index');
             } elseif(Auth::attempt(array('username' => $userdata['user'], 'password' => $userdata['password']), true)) {
-                echo 'berhasil login';
-                return redirect()->route('index');
+                $role = Auth::user()->role_id;
+                if($role==1)
+                    return redirect()->route('admin.index');
+                else if($role==2)
+                    return redirect()->route('index');
             } else {
                 echo 'gagal login';
                 return view('index')

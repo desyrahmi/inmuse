@@ -23,7 +23,6 @@ class User extends Authenticatable
         return $this->hasMany('App\Review', 'user_id', 'id');
     }
 
-
     public function hasRole($roles){
         $this->have_role = $this->getUserRole();
 

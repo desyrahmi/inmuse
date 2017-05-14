@@ -18,49 +18,61 @@ class UserController extends Controller
         return view('form.adduser');
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $rules = array(
             'name' => 'required',
             'username' => 'required',
             'email' => 'required',
             'password' => 'required',
+            'retype-password' => 'required',
+            'phone',
+            'role_id'
         );
-        $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails()) {
-            Session::flash('fail', 'Gagal menambahkan user');
-            return redirect()->route('user.add.index');
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()){
+            return dd("gagal lewat validator");
+            return redirect()->route('auth.register')
+                ->withErrors($validator);
         }
-        $data = Input::all();
-        if (User::where('email', $data['email'])->count() > 0) {
-            Session::flash('fail', 'Gagal menamnahkan user.');
-            return redirect()->route('user.add.index');
-        } elseif (User::where('username', $data['username'])->count() > 0) {
-            Session::flash('fail', 'Gagal menamnahkan user.');
-            return redirect()->route('user.add.index');
-        }
-        $user = new User();
-        $user->name = $data['name'];
-        $user->username = $data['username'];
-        if (Input::get('phone')!=null) {
-            $user->phone = $data['phone'];
-        } else {
-            $user->phone = "-";
-        }
-        $user->email = $data['email'];
-        $user->password = Hash::make($data['password']);
-        if (Input::get('role_id')!=null) {
-            $user->role_id = $data['role_id'];
-        } else {
-            $user->role_id = 2;
-        }
-
-        if ($user->save()) {
-            Session::flash('success', 'User berhasil ditambahkan');
-            return redirect()->route('user.add.index');
-        } else {
-            Session::flash('fail', 'Gagal menambahkan user');
-            return redirect()->route('user.add.index');
+        else{
+//            $data = $request->all();
+            if($request->input['retype-password'] != $request->input['password']){
+                return dd("password miss matches");
+                return redirect()->route('auth.register')
+                    ->withErrors("Password miss matches");
+            }
+            $check_username = User::where('username', '=', $request->input['username'])->first();
+            $check_email = User::where('email', '=', $request->input['email'])->first();
+            if($check_username){
+                Session::flash('fail', 'Email sudah terdaftar.');
+                return redirect()->route('auth.register');
+            } elseif ($check_email){
+                Session::flash('fail', 'Username sudah terdaftar.');
+                return redirect()->route('auth.register');
+            } else{
+                $user = new User($request->all());
+//                $user->name = $request->input['name'];
+//                $user->username = $request->input['username'];
+//                $user->email = $request->input['email'];
+                if($request->input['phone'] != null){
+                    $user->phone = $request->input['phone'];
+                } else {
+                    $user->phone = '-';
+                }
+                $user->password = Hash::make($request->input['password']);
+                if($request->input['role_id'] != null){
+                    $user->role_id = $request->input['role_id'];
+                } else {
+                    $user->role_id = 2;
+                }
+                if($user->save()){
+                    return redirect()->route('auth.index');
+                } else {
+                    return dd("masih salah");
+                    return redirect()->route('auth.register');
+                }
+            }
         }
     }
 
@@ -82,8 +94,7 @@ class UserController extends Controller
 //        return view('profile', ['user' => $user]);
 //    }
     public function showProfile($username){
-       $user = User::where('username', '=', $username)->first();
-
+        $user = User::where('username', '=', $username)->first();
         return view('profile', ['user' => $user]);
     }
 

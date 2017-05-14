@@ -1,49 +1,99 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+	<meta charset="UTF-8">
 	<title>@yield('title')</title>
-	<!-- Bootstrap Core CSS -->
-	<link href="{{ URL::asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"/>
-	<!-- MetisMenu CSS -->
-	<link href="{{ URL::asset('vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet"/>
-
-	<!-- Custom CSS -->
-	<link href="{{ URL::asset('dist/css/sb-admin-2.css') }}" rel="stylesheet"/>
-
-	<!-- Morris Charts CSS -->
-	<link href="{{ URL::asset('vendor/morrisjs/morris.css') }}" rel="stylesheet"/>
-
-	<!-- Custom Fonts -->
-	<link href="{{ URL::asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
-
-
-	@yield('moreStyles')
+	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+	<!-- bootstrap 3.0.2 -->
+	<link href="{{URL::asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
+	<!-- font Awesome -->
+	<link href="{{URL::asset('css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
+	<!-- Ionicons -->
+	<link href="{{URL::asset('css/ionicons.min.css')}}" rel="stylesheet" type="text/css"/>
+	<link href="{{URL::asset('css/style.css')}}" rel="stylesheet" type="text/css"/>
 </head>
-<body>
-	@yield('navbar')
-	
-		@yield('content')
+<body class="skin-blue">
+@yield('navbar')
+<aside class="left-side sidebar-offcanvas">
+	<!-- sidebar: style can be found in sidebar.less -->
+	<section class="sidebar">
+		<!-- Sidebar user panel -->
+		<div class="user-panel">
+			<div class="pull-left image">
+				<img src="img/avatar3.png" class="img-circle" alt="User Image" />
+			</div>
+			<div class="pull-left info">
+				<p>Hello, Jane</p>
 
-	<!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+				<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+			</div>
+		</div>
+		<!-- search form -->
+		<form action="#" method="get" class="sidebar-form">
+			<div class="input-group">
+				<input type="text" name="q" class="form-control" placeholder="Search..."/>
+				<span class="input-group-btn">
+                                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                            </span>
+			</div>
+		</form>
+		<!-- /.search form -->
+		<!-- sidebar menu: : style can be found in sidebar.less -->
+		<ul class="sidebar-menu">
+			<li class="active">
+				<a href="#">
+					<i class="fa fa-dashboard"></i> <span>Dashboard</span>
+				</a>
+			</li>
+			<li class="treeview">
+				<a href="#">
+					<i class="fa fa-laptop"></i>
+					<span>UI Elements</span>
+					<i class="fa fa-angle-left pull-right"></i>
+				</a>
+				<ul class="treeview-menu">
+					<li><a href="#"><i class="fa fa-angle-double-right"></i> General</a></li>
+					<li><a href="#"><i class="fa fa-angle-double-right"></i> Icons</a></li>
+					<li><a href="#"><i class="fa fa-angle-double-right"></i> Buttons</a></li>
+					<li><a href="#"><i class="fa fa-angle-double-right"></i> Sliders</a></li>
+					<li><a href="#"><i class="fa fa-angle-double-right"></i> Timeline</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fa fa-envelope"></i> <span>Mailbox</span>
+					<small class="badge pull-right bg-yellow">12</small>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- /.sidebar -->
+</aside>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- end of sidebar -->
+<aside class="right-side">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1>
+			Dashboard
+			<small>Control panel</small>
+		</h1>
+		<div class="container">
+			@yield('content')
+		</div>
+	</section>
+</aside>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="vendor/metisMenu/metisMenu.min.js"></script>
-
-    <!-- DataTables JavaScript -->
-    <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-    <script src="vendor/datatables-responsive/dataTables.responsive.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="dist/js/sb-admin-2.js"></script>
-	@yield('moreScripts')
+<!-- jQuery 2.0.2 -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<!-- jQuery UI 1.10.3 -->
+<script src="{{URL::asset('js/jquery-ui-1.10.3.min.js')}}" type="text/javascript"></script>
+<!-- Bootstrap -->
+<script src="{{URL::asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
+<!-- AdminLTE App -->
+<script src="{{URL::asset('js/AdminLTE/app.js')}}" type="text/javascript"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{{URL::asset('js/AdminLTE/dashboard.js')}}" type="text/javascript"></script>
+<script src="{{URL::asset('js/modal.js')}}" type="text/javascript"></script>
 </body>
 </html>
