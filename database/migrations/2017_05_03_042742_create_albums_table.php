@@ -19,8 +19,7 @@ class CreateAlbumsTable extends Migration
                 $table->string('review');
                 $table->date('release');
                 $table->string('artist');
-                $table->integer('photo_id')->unsigned();
-                $table->foreign('photo_id')->references('id')->on('photos');
+                $table->string('photo');
                 $table->timestamps();
             });
         }

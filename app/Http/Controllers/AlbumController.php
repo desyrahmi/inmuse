@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Album;
-use App\Role;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -22,12 +21,10 @@ class AlbumController extends Controller
     public function create(Request $request){
         $rules = array(
             'title' => 'required',
-            'review',
             'artist' => 'required',
-            'release'
         );
 
-        $validator = Validator::make($request, $rules);
+        $validator = Validator::make($request->all(), $rules);
 
         if($validator->fails()){
             Session::flash('fail','Gagal menambahkan album');
@@ -36,23 +33,20 @@ class AlbumController extends Controller
 
         //
         $album = new Album();
-        $album->title = $request['title'];
-        $album->review = $request['review'];
-        $album->artist = $request['artist'];
-        $album->release = $request['release'];
+        $album->title = $request->title;
+        $album->review = $request->review;
+        $album->artist = $request->artist;
+        $album->release = $request->release;
+//        return dd($album);
         $album->save();
 
-        if ($request->photo !== null) {
-            $photoName = 'album_'.$album->id . '.jpg';
-            $photo = new Photo();
-            $photo->name = $photoName;
-            $photo->extension = 'jpg';
-            $photo->save();
-            $request->photo->move(public_path('img'), $photoName);
-            $album->photo_id = $photo->id;
+        $file = $request->file('photoalbum');
+        if ( $file !== null) {
+            $photoalbumName = 'album_'.$album->id .'.jpg';
+            $file->move(public_path('img'), $photoalbumName);
+            $album->photo = $photoalbumName;
             $album->save();
         }
-
         if($album->save()){
             Session::flash('success', 'album berhasil ditambahkan');
             return redirect()->route('list.album');
@@ -70,7 +64,6 @@ class AlbumController extends Controller
     public function delete($id){
         $album = Album::find($id);
         $album->delete();
-
-        return redirect()->route('album.show');
+        return redirect()->route('list.album');
     }
 }

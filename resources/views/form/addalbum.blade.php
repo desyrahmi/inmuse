@@ -8,7 +8,8 @@
 
 @section('content')
     <div class="col-xs-8">
-        <form action="" role="form">
+        <form action="{{route('add.album')}}" role="form" method="post">
+            {{csrf_field()}}
             <div class="form-group">
                 <label>Artist</label>
                 <input type="text" class="form-control" name="artist" placeholder="Artist">
@@ -19,7 +20,7 @@
             </div>
             <div class="form-group">
                 <label>Release Date</label>
-                <input type="date" class="form-control" name="date">
+                <input type="date" class="form-control" name="release">
             </div>
             <div class="form-group">
                 <label>Overview</label>
@@ -27,12 +28,10 @@
             </div>
             <div class="form-group">
                 <label>Cover</label>
-                <input type="file" name="photo">
+                <input type="file" name="photoalbum">
             </div>
             <button type="submit" class="btn btn-default">Add Album</button>
             <button type="reset" class="btn btn-default" style="margin-left: 10px">Cancel</button>
         </form>
     </div>
-@endsection
-
 @endsection

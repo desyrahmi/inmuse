@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
                 'phone' => '-',
                 'email' => 'admin@inmuse.com',
                 'password' => Hash::make('admin'),
-                'role_id' => '1'
+                'role' => 'admin'
             ]
 
         ]);

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-static-top" role="navigation">
+<nav class="navbar navbar-fixed-top" role="navigation">
     <div class="navbar-left col-xs-5">
         <ul class="nav navbar-nav">
             <li><a href="{{route('index')}}"><img src="{{URL::asset('img/logo-putih.png')}}" width="60px" height="38px"></a></li>
@@ -24,8 +24,8 @@
                 @if(!Auth::check())
                     <li>
                         <a href="#" id="myBtn" class="">
-                                <i class="glyphicon glyphicon-log-in">&nbsp;Sign In</i>
-                            </a>
+                            <i class="glyphicon glyphicon-log-in">&nbsp;Sign In</i>
+                        </a>
                         <!-- The Modal -->
                         <div id="myModal" class="modal">
                             <!-- Modal content -->
@@ -65,14 +65,14 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             {{--<span>{{$user->name}}&nbsp;<i class="caret"></i></span>--}}
-                            <span>NAMA&nbsp;<i class="caret"></i></span>
+                            <span>{{Auth::user()->name}}<i class="caret"></i></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header bg-light-blue">
                                 <img src="{{URL::asset('img/'.Auth::user()->id.'.jpg')}}" class="img-circle" alt="User Image" />
                                 <p>
-                                    {{--{{$user->name}}--}}NAMA
+                                    {{Auth::user()->name}}
                                     <small>Member since ...</small>
                                 </p>
                             </li>

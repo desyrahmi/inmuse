@@ -37,21 +37,20 @@ class AuthController extends Controller
                 ->withInput(Input::except('password'));
         } else {
             $userdata = array(
-                'user' => $request->input('user'),
-                'password' => Hash::make($request->input('password'))
+                'user' => $request->user,
+                'password' => $request->password
             );
-
             if (Auth::attempt(array('email' => $userdata['user'], 'password' => $userdata['password']), true)) {
-                $role = Auth::user()->role_id;
-                if($role==1)
+                $role = Auth::user()->role;
+                if($role=='admin')
                     return redirect()->route('admin.index');
-                else if($role==2)
+                else if($role=='user')
                     return redirect()->route('index');
             } elseif(Auth::attempt(array('username' => $userdata['user'], 'password' => $userdata['password']), true)) {
-                $role = Auth::user()->role_id;
-                if($role==1)
+                $role = Auth::user()->role;
+                if($role=='admin')
                     return redirect()->route('admin.index');
-                else if($role==2)
+                else if($role=='user')
                     return redirect()->route('index');
             } else {
                 echo 'gagal login';

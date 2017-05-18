@@ -18,30 +18,21 @@
                 <table width="100%" class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th class="text-center">ID</th>
                         <th class="text-center">Title</th>
                         <th class="text-center">Artist</th>
                         <th class="text-center">Rating</th>
-                        <th colspan="2" class="text-center">Menu</th>
+                        <th class="text-center">Menu</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td class="text-center">1</td>
-                        <td>Sinestesia</td>
-                        <td>Efek Rumah Kaca</td>
-                        <td>4.5</td>
-                        <td class="text-center">Edit</td>
-                        <td class="text-center">Delete</td>
+                    @foreach($albums as $album)
+                        <tr>
+                            <td>{{$album->title}}</td>
+                            <td>{{$album->artist}}</td>
+                            <td>4.5</td>
+                            <td class="text-center"><a href="{{route('delete.album', ['id' => $album->id])}}" class="btn">Delete</a></td>
                     </tr>
-                    <tr>
-                        <td class="text-center">2</td>
-                        <td>Sinestesia</td>
-                        <td>Efek Rumah Kaca</td>
-                        <td>4.5</td>
-                        <td class="text-center">Edit</td>
-                        <td class="text-center">Delete</td>
-                    </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

@@ -19,7 +19,8 @@ class CreatePhotosTable extends Migration
                 $table->string('extension');
                 $table->timestamps();
             });
-        }    }
+        }
+    }
 
     /**
      * Reverse the migrations.

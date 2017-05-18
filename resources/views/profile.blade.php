@@ -16,9 +16,7 @@
                     <img src="{{URL::asset('img/'.Auth::user()->id.'.jpg')}}" alt="Texto Alternativo" class="fotoprofil foto-circle1">
 
                     <div class="btn-group">
-                        <button type="button" class="btn btn-inverse" data-toggle="modal" data-target="#squarespaceModal">
-                            Edit Profile
-                        </button>
+                        <a href="{{route('user.edit.show', ['id'=>Auth::user()->id])}}" class="btn btn-inverse">Edit Profile</a>
                     </div>
                 </div>
             </div>

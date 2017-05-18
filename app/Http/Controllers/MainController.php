@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
-//use App\User;
-use App\Role;
+use App\User;
 use App\Album;
 use App\Review;
 
@@ -29,15 +28,15 @@ class MainController extends Controller
         return view('dashboard');
     }
 
-//    public function showAlbum($id){
-//        $album = Album::find($id);
-//        return view('album',['album'=> $album]);
-//    }
-
-    public function showAlbum(){
-//        $album = Album::find($id);
-        return view('album');
+    public function showAlbum($id){
+        $showAlbum= Album::find($id);
+        return view('album',['showAlbum'=> $showAlbum]);
     }
+
+//    public function showAlbum(){
+////        $album = Album::find($id);
+//        return view('album');
+//    }
 
     public function people(){
 //        $review = Review::get();
@@ -45,8 +44,7 @@ class MainController extends Controller
     }
 
     public function discover(){
-//        $albums = Album::get();
-//        return view('discover', ['albums' => $albums]);
-        return view('discover');
+        $albums = Album::get();
+        return view('discover', ['albums' => $albums]);
     }
 }

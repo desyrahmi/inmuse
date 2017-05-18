@@ -8,11 +8,7 @@ class Album extends Model
 {
     protected $table = 'albums';
     protected $dates = ['created_at','updated_at'];
-    protected $fillable = ['title', 'review', 'release', 'artist'];
-
-    public function photo(){
-        return $this->belongsTo('App\Photo','photo_id','id');
-    }
+    protected $fillable = ['title', 'review', 'release', 'artist', 'photo'];
 
     public function songs(){
         return $this->hasMany('App\Song', 'album_id', 'id');

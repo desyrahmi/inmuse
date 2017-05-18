@@ -95,7 +95,7 @@ body > .header {
 body.fixed > .header,
 body.fixed .left-side,
 body.fixed .navbar {
-  position: fixed;
+  position: absolute;
 }
 body.fixed > .header {
   top: 0;
@@ -108,6 +108,9 @@ body.fixed .navbar {
 }
 body.fixed .wrapper {
   margin-top: 50px;
+}
+.isi{
+  padding-top: 80px;
 }
 /* Content */
 .content {
@@ -142,7 +145,7 @@ h6,
 }
 /* All images should be responsive */
 img {
-  max-width: 100%important;
+  max-width: 100% important;
 }
 .sort-highlight {
   background: #f4f4f4;
@@ -2889,7 +2892,6 @@ Component: timeline
   align: center;
 }
 /*post*/
-
 .home-post:hover {
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
@@ -3436,3 +3438,7 @@ figure.effect-zoe:hover p.icon-links a:first-child {
   color: white;
 }
 /*end of modal*/
+
+/*star rating*/
+
+/*end of star rating*/

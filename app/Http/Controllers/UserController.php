@@ -1,6 +1,5 @@
 <?php
 namespace App\Http\Controllers;
-use App\Role;
 use App\User;
 use App\Photo;
 use Illuminate\Http\Request;
@@ -25,20 +24,15 @@ class UserController extends Controller
             'username' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'retype-password' => 'required',
-            'phone',
-            'role_id'
+            'retype-password' => 'required'
         );
         $validator = Validator::make($request->all(), $rules);
         if($validator->fails()){
-            return dd("gagal lewat validator");
             return redirect()->route('auth.register')
                 ->withErrors($validator);
         }
         else{
-//            $data = $request->all();
             if($request->input['retype-password'] != $request->input['password']){
-                return dd("password miss matches");
                 return redirect()->route('auth.register')
                     ->withErrors("Password miss matches");
             }
@@ -51,25 +45,24 @@ class UserController extends Controller
                 Session::flash('fail', 'Username sudah terdaftar.');
                 return redirect()->route('auth.register');
             } else{
-                $user = new User($request->all());
-//                $user->name = $request->input['name'];
-//                $user->username = $request->input['username'];
-//                $user->email = $request->input['email'];
-                if($request->input['phone'] != null){
-                    $user->phone = $request->input['phone'];
+                $user = new User();
+                $user->name = $request->name;
+                $user->username = $request->username;
+                $user->email = $request->email;
+                if($request->phone != null){
+                    $user->phone = $request->phone;
                 } else {
                     $user->phone = '-';
                 }
-                $user->password = Hash::make($request->input['password']);
-                if($request->input['role_id'] != null){
-                    $user->role_id = $request->input['role_id'];
+                $user->password = Hash::make($request->password);
+                if($request->role != null){
+                    $user->role = $request->role;
                 } else {
-                    $user->role_id = 2;
+                    $user->role = 'user';
                 }
                 if($user->save()){
                     return redirect()->route('auth.index');
                 } else {
-                    return dd("masih salah");
                     return redirect()->route('auth.register');
                 }
             }
@@ -101,7 +94,7 @@ class UserController extends Controller
     public function showEditForm($id)
     {
         $user = User::find($id);
-        return view('profile', ['user' => $user]);
+        return view('form.editprofile', ['user' => $user]);
     }
 
     public function update(Request $request){

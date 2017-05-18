@@ -15,7 +15,9 @@
 <body class="skin-black">
 @yield('navbar')
 <div class="container">
-	@yield('content')
+	<div class="isi">
+		@yield('content')
+	</div>
 </div>
 <br>
 @yield('footer')
@@ -30,5 +32,6 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{URL::asset('js/AdminLTE/dashboard.js')}}" type="text/javascript"></script>
 <script src="{{URL::asset('js/modal.js')}}" type="text/javascript"></script>
+<script src="{{URL::asset('js/star-rating.js')}}" type="text/javascript"></script>
 </body>
 </html>
