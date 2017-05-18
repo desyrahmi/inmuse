@@ -10,12 +10,12 @@
     <div class="row">
         <div class="col-xs-4">
             <div class="center-block">
-                <img src="{{URL::asset('img/kamargelap.jpg')}}" alt="lala" width="250px" height="250px"/>
+                <img src="{{URL::asset('img/album_'.$album->id .'.jpg')}}" alt="lala" width="250px" height="250px"/>
             </div>
         </div>
         <div class="col-xs-8">
-            <h4>Kamar Gelap</h4>
-            <h3>Efek Rumah Kaca</h3>
+            <h4>{{$album->title}}</h4>
+            <h3>{{$album->artist}}</h3>
             <div class="tabbable">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#one" data-toggle="tab"> Overview</a></li>
@@ -24,15 +24,7 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="one">
                         <br>
-                        <p>
-                            <strong>Augue iriure</strong> dolorum per ex, ne iisque ornatus veritus duo. Ex nobis integre lucilius sit, pri ea falli ludus appareat. Eum quodsi fuisset id, nostro patrioque qui id. Nominati eloquentiam in mea.
-                        </p>
-                        <p>
-                            No eum sanctus vituperata reformidans, dicant abhorreant ut pro. Duo id enim iisque praesent, amet intellegat per et, solet referrentur eum et.
-                        </p>
-                        <p>
-                            Tale dolor mea ex, te enim assum suscipit cum, vix aliquid omittantur in. Duo eu cibo dolorum menandri, nam sumo dicit admodum ei. Ne mazim commune honestatis cum, mentitum phaedrum sit et.
-                        </p>
+                        <p>{{$album->review}}</p>
                     </div>
                     <div class="tab-pane" id="two">
                         <br>
@@ -49,57 +41,23 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-4">
+        <div class="col-xs-3">
             <h4>Song List</h4>
             <table class="table table-user-information">
                 <thead>
                 <tr>
-                    <th>No.</th>
+                    {{--<th>No.</th>--}}
                     <th>Title</th>
-                    <th>Duration</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1.</td>
-                    <td>Tubuhmu Membiru... Tragis</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>2.</td>
-                    <td>Kau dan Aku Menuju Ruang Hampa</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>3.</td>
-                    <td>Mosi Tidak Percaya</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>4.</td>
-                    <td>Lagu Kesepian</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>5.</td>
-                    <td>Hujan Jangan Marah</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>6.</td>
-                    <td>Kenakalan Remaja di Era Informatika</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>7.</td>
-                    <td>Menjadi Indonesia</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>8.</td>
-                    <td>Kamar Gelap</td>
-                    <td></td>
-                </tr>
+                @foreach($songs as $song)
+                    {{--@for($i = 1; $i <= )--}}
+                    <tr>
+                        {{--<td></td>--}}
+                        <td>{{$song->title}}</td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
@@ -112,7 +70,7 @@
                         <div class="panel-body">
                             <form action="" method="post">
                                 <textarea style="width: 100%;" placeholder="Write your review here!" class="pb-cmnt-textarea" name="comment"></textarea>
-                                <button class="btn btn-primary pull-right" type="button" style="margin-top: 10px">Share</button>
+                                <a href="{{route('album.detail', ['id' => $album->id])}}" class="btn btn-primary pull-right">Share</a>
                             </form>
                         </div>
                     </div>
@@ -154,6 +112,7 @@
                 </div>
             </div>
         </div>
+        <div class="col-xs-1"></div>
     </div>
 @endsection
 

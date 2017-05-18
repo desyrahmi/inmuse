@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\User;
+use App\Song;
 use App\Album;
 use App\Review;
 
@@ -29,8 +30,10 @@ class MainController extends Controller
     }
 
     public function showAlbum($id){
-        $showAlbum= Album::find($id);
-        return view('album',['showAlbum'=> $showAlbum]);
+        $album= Album::find($id);
+        $songs = Song::with('album')->where('album_id', '=', $id)->get();
+//        return dd($songs);
+        return view('album',['album'=> $album, 'songs' => $songs]);
     }
 
 //    public function showAlbum(){

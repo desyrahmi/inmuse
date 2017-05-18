@@ -46,7 +46,7 @@
                         <span class="tags"><a href="#">{{$album->artist}}</a></span>
                     </div>
                     <div class="entry-content">
-                        <h5><strong><a href={{route('album.detail')}}>{{$album->title}}</a></strong></h5>
+                        <h5><strong><a href={{route('album.detail', ['id' => $album->id])}}>{{$album->title}}</a></strong></h5>
                         <p>
                             {{ str_limit($album->review, 100) }}
                         </p>

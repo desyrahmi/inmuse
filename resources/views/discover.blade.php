@@ -16,7 +16,7 @@
                 <figure class="effect-zoe">
                     <img src="{{URL::asset('img/album_'.$album->id .'.jpg')}}" alt="img25" width="100%" height="215px">
                     <figcaption>
-                        <h5><strong><a href="{{route('album.detail')}}">{{$album->title}}</a></strong></h5>
+                        <h5><strong><a href="{{route('album.detail', ['id' => $album->id])}}">{{$album->title}}</a></strong></h5>
                     </figcaption>
                 </figure>
                 @endforeach
@@ -30,7 +30,7 @@
                     <figure class="effect-zoe">
                     <img src="{{URL::asset('img/album_'.$album->id .'.jpg')}}" alt="img25" width="100%" height="215px">
                     <figcaption>
-                        <h5><strong><a href="{{route('album.detail')}}">{{$album->title}}</a></strong></h5>
+                        <h5><strong><a href="{{route('album.detail', ['id' => $album->id])}}">{{$album->title}}</a></strong></h5>
                     </figcaption>
                 </figure>
                 @endforeach

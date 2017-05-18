@@ -11,6 +11,6 @@ class Song extends Model
     protected $fillable = ['title', 'duration'];
 
     public function album(){
-        return $this->belongsTo('App\Photo','album_id','id');
+        return $this->belongsTo('App\Album','album_id','id');
     }
 }

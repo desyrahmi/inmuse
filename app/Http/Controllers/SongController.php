@@ -12,18 +12,20 @@ use Illuminate\Support\Facades\Input;
 use Validator;
 use Session;
 use Hash;
+use DB;
+use App\Http\Controllers\Controller;
 
 class SongController extends Controller
 {
     public function addIndex(){
-        return view('form.addsong');
+        $albums = Album::get();
+        return view('form.addsong', ['albums' => $albums]);
     }
 
     public function create(Request $request){
         $rules = array(
             'title' => 'required',
-            'album_id' => 'required',
-            'duration'
+            'album_id' => 'required'
         );
 
         $validator = Validator::make($request->all(), $rules);
@@ -32,13 +34,13 @@ class SongController extends Controller
             Session::flash('fail','Gagal menambahkan album');
             return redirect()->route('add.album.index');
         }
-
-        //
         $song = new Song();
         $song->title = $request->title;
         $song->album_id= $request->album_id;
-        $song->artist = $request->duration;
-//        return dd($album);
+        if($request->duration != null){
+            $song->duration = $request->duration;
+        }
+//        return dd($song);
         $song->save();
 
         if($song->save()){
@@ -51,13 +53,15 @@ class SongController extends Controller
     }
 
     public function index(){
-        $albums = Song::get();
-        return view('listsong',['albums' => $albums]);
+        $songs= Song::with('album')->orderBy('title', 'asc')->get();
+//        $albums = Album::get();
+//        return dd($songs);
+        return view('listsong',['songs' => $songs]);
     }
 
     public function delete($id){
-        $album = Album::find($id);
-        $album->delete();
-        return redirect()->route('list.album');
+        $song = Song::find($id);
+        $song->delete();
+        return redirect()->route('list.song');
     }
 }

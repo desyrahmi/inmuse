@@ -65,7 +65,7 @@
 				<ul class="treeview-menu">
 					<li><a href="{{route('list.album')}}"><i class="fa fa-angle-double-right"></i> List Albums</a></li>
 					<li><a href="{{route('add.album.index')}}"><i class="fa fa-angle-double-right"></i> Add Album</a></li>
-					<li><a href="#"><i class="fa fa-angle-double-right"></i> List Songs</a></li>
+					<li><a href="{{route('list.song')}}"><i class="fa fa-angle-double-right"></i> List Songs</a></li>
 					<li><a href="{{route('add.song.index')}}"><i class="fa fa-angle-double-right"></i> Add Song</a></li>
 				</ul>
 			</li>

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -16,5 +15,9 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
-
+    public function index($id){
+        $album= Album::find($id);
+        $songs = Song::with('album')->get();
+        return view('album',['album'=> $album, 'songs' => $songs]);
+    }
 }

@@ -11,8 +11,8 @@
 */
 Route::get('/', ['uses' => 'MainController@index', 'as' => 'index']);
 
-//Route::get('/album/{id}', ['uses' => 'MainController@showAlbum', 'as' => 'album.detail']);
-Route::get('/album/1', ['uses' => 'MainController@showAlbum', 'as' => 'album.detail']);
+//Route::get('/album/1', ['uses' => 'MainController@showAlbum', 'as' => 'album.detail']);
+Route::get('/album/{id}', ['uses' => 'MainController@showAlbum', 'as' => 'album.detail']);
 Route::get('/discover', ['uses' => 'MainController@discover', 'as' => 'discover']);
 Route::get('/people', ['uses' => 'MainController@people', 'as' => 'people']);
 
@@ -33,8 +33,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/add-album', ['uses' => 'AlbumController@create', 'as' => 'add.album']);
     Route::get('/delete-album/{id}', ['uses' => 'AlbumController@delete', 'as' => 'delete.album']);
 
+    Route::get('/list-song', ['uses' => 'SongController@index', 'as' => 'list.song']);
     Route::get('/add-song', ['uses' => 'SongController@addIndex', 'as' => 'add.song.index']);
-    Route::get('/add-song', ['uses' => 'SongController@create', 'as' => 'add.song']);
+    Route::post('/add-song', ['uses' => 'SongController@create', 'as' => 'add.song']);
+    Route::get('/delete-song/{id}', ['uses' => 'SongController@delete', 'as' => 'delete.song']);
 
     Route::get('/logout', ['uses' => 'AuthController@doLogout', 'as' => 'auth.doLogout']);
 

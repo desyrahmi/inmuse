@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Album;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 
@@ -15,7 +15,8 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $albums = Album::get();
+        return view('index',['albums' => $albums]);
     }
 
     public function register(){
@@ -54,8 +55,8 @@ class AuthController extends Controller
                     return redirect()->route('index');
             } else {
                 echo 'gagal login';
-                return view('index')
-                    ->withErrors(['Email/Username atau Password salah'])
+                return redirect()->route('index')
+                ->withErrors(['Email/Username atau Password salah'])
                     ->withInput(Input::except('password'));
             }
         }
