@@ -32,10 +32,10 @@
                             <td>{{$song->album->title}}</td>
                             <td class="text-center"><a href="{{route('delete.song', ['id' => $song->id])}}" class="btn">Delete</a></td>
                         </tr>
-{{--                        {!! $song->render() !!}--}}
                     @endforeach
                     </tbody>
                 </table>
+                {!! $songs->render() !!}
             </div>
         </div>
     </section>

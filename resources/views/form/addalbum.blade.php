@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="col-xs-8">
-        <form action="{{route('add.album')}}" role="form" method="post">
+        <form action="{{route('add.album')}}" role="form" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="form-group">
                 <label>Artist</label>

@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/add-album', ['uses' => 'AlbumController@addIndex', 'as' => 'add.album.index']);
     Route::post('/add-album', ['uses' => 'AlbumController@create', 'as' => 'add.album']);
     Route::get('/delete-album/{id}', ['uses' => 'AlbumController@delete', 'as' => 'delete.album']);
+    Route::post('/album/{id}/review', ['uses' => 'ReviewController@create', 'as' => 'add.review']);
 
     Route::get('/list-song', ['uses' => 'SongController@index', 'as' => 'list.song']);
     Route::get('/add-song', ['uses' => 'SongController@addIndex', 'as' => 'add.song.index']);

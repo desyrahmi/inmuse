@@ -16,10 +16,12 @@
         <div class="col-xs-8">
             <h4>{{$album->title}}</h4>
             <h3>{{$album->artist}}</h3>
+            <div class="ratingStar" id="rateYo" avgRating="{{$avgrating}}"></div>
+            <br>
             <div class="tabbable">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#one" data-toggle="tab"> Overview</a></li>
-                    <li><a href="#two" data-toggle="tab">User Review</a></li>
+                    <li><a href="#two" data-toggle="tab">Best User Review</a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="one">
@@ -46,16 +48,13 @@
             <table class="table table-user-information">
                 <thead>
                 <tr>
-                    {{--<th>No.</th>--}}
                     <th>Title</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($songs as $song)
-                    {{--@for($i = 1; $i <= )--}}
+                @foreach($songs as $indexKey => $song)
                     <tr>
-                        {{--<td></td>--}}
-                        <td>{{$song->title}}</td>
+                        <td>{{$indexKey+1}}.&nbsp;&nbsp;&nbsp;{{$song->title}}</td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -68,49 +67,38 @@
                 <div class="col-xs-12">
                     <div class="panel panel-info">
                         <div class="panel-body">
-                            <form action="" method="post">
+                            <form action="{{route('add.review', ['id' => $album->id])}}" method="post">
+                                {{csrf_field()}}
+                                <input type="text" id="userRating" hidden value="0" name="rating">
+                                <div class="userRatingInput" id="rateYo"></div>
+                                <br>
                                 <textarea style="width: 100%;" placeholder="Write your review here!" class="pb-cmnt-textarea" name="comment"></textarea>
-                                <a href="{{route('album.detail', ['id' => $album->id])}}" class="btn btn-primary pull-right">Share</a>
+                                <br>
+                                <button class="btn btn-primary pull-right">Submit</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
 
+            @foreach($reviews as $review)
             <div class="panel panel-white post panel-shadow">
                 <div class="post-heading">
                     <div class="pull-left image">
-                        <img src="{{URL::asset('img/1.jpg')}}" class="img-circle avatar" alt="user profile image" height="250px" width="250px">
+                        <img src="{{URL::asset('img/'.$review->user->id.'.jpg')}}" class="img-circle avatar" alt="user profile image" height="250px" width="250px">
                     </div>
                     <div class="pull-left meta">
                         <div class="title h5">
-                            <b>Ryan Haywood</b>
-                            made a post.
+                            <b>{{$review->user->name}}</b>
                         </div>
-                        <h6 class="text-muted time">1 minute ago</h6>
+                        <div class="rating reviewRating {{$review->id}}" id="rateYo" reviewId="{{$review->id}}" ratingValue="{{$review->rating}}"></div>
                     </div>
                 </div>
                 <div class="post-description">
-                    <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
+                    <p>{{$review->comment}}</p>
                 </div>
             </div>
-            <div class="panel panel-white post panel-shadow">
-                <div class="post-heading">
-                    <div class="pull-left image">
-                        <img src="{{URL::asset('img/1.jpg')}}" class="img-circle avatar" alt="user profile image">
-                    </div>
-                    <div class="pull-left meta">
-                        <div class="title h5">
-                            <b>Ryan Haywood</b>
-                            made a post.
-                        </div>
-                        <h6 class="text-muted time">1 minute ago</h6>
-                    </div>
-                </div>
-                <div class="post-description">
-                    <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="col-xs-1"></div>
     </div>

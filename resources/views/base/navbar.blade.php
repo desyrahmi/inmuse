@@ -23,8 +23,8 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 @if(!Auth::check())
                     <li>
-                        <a href="#" id="myBtn" class="">
-                            <i class="glyphicon glyphicon-log-in">&nbsp;Sign In</i>
+                        <a href="#" id="myBtn" class="font">
+                            <i class="fa fa-sign-in">&nbsp;&nbsp;Sign In</i>
                         </a>
                         <!-- The Modal -->
                         <div id="myModal" class="modal">
@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <div class="pull-right">
-                                            <button class="btn btn-info glyphicon glyphicon-log-in">&nbsp;Sign in</button>
+                                            <button class="btn btn-info fa fa-sign-in">&nbsp;&nbsp;Sign in</button>
                                         </div>
                                     </div>
                                 </form>
@@ -58,7 +58,7 @@
                     </li>
                     <li class="">
                         <a href="{{route('auth.register')}}" class="">
-                            <i class="glyphicon glyphicon-user">&nbsp;Sign Up</i>
+                            <i class="fa fa-user">&nbsp;&nbsp;Sign Up</i>
                         </a>
                     </li>
                 @else

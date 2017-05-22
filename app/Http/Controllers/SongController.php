@@ -17,8 +17,13 @@ use App\Http\Controllers\Controller;
 
 class SongController extends Controller
 {
+    public function index(){
+        $songs= Song::with('album')->orderBy('title', 'asc')->paginate(10);
+        return view('listsong',['songs' => $songs]);
+    }
+
     public function addIndex(){
-        $albums = Album::get();
+        $albums = Album::orderBy('title', 'asc')->get();
         return view('form.addsong', ['albums' => $albums]);
     }
 
@@ -40,7 +45,6 @@ class SongController extends Controller
         if($request->duration != null){
             $song->duration = $request->duration;
         }
-//        return dd($song);
         $song->save();
 
         if($song->save()){
@@ -50,13 +54,6 @@ class SongController extends Controller
             Session::flash('fail', 'Gagal menambahkan album');
             return redirect()->route('add.song.index');
         }
-    }
-
-    public function index(){
-        $songs= Song::with('album')->orderBy('title', 'asc')->get();
-//        $albums = Album::get();
-//        return dd($songs);
-        return view('listsong',['songs' => $songs]);
     }
 
     public function delete($id){

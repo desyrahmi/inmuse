@@ -12,11 +12,11 @@
             {{csrf_field()}}
             <div class="form-group">
                 <label>Title</label>
-                <input type="text" class="form-control" name="title" placeholder="Artist">
+                <input type="text" class="form-control" name="title" placeholder="Title">
             </div>
             <div class="form-group">
                 <label>Duration</label>
-                <input type="text" class="form-control" name="duration" placeholder="Title">
+                <input type="text" class="form-control" name="duration" placeholder="Duration">
             </div>
             <div class="form-group">
                 <label>Album Name</label>

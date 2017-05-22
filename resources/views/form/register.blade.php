@@ -9,7 +9,7 @@
 @section('content')
     <div class="col-xs-3"></div>
     <div class="col-xs-6">
-        <h3>Register</h3>
+        <h3>Register</h3><br>
         <img src="{{URL::asset('img/logo-hitam.png')}}" width="255px" height="129px" style="align-content: center;">
         <br><br>
         <form action="{{route('user.register')}}" method="post">

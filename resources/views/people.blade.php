@@ -9,236 +9,28 @@
 @section('content')
     <div class="row">
         <div class="col-xs-12">
-            <h4>People</h4>
+            <h3>People's Review</h3>
             <hr>
-            <div class="col-xs-4">
-                <div class="panel panel-white post panel-shadow" style="margin-bottom: 15px">
-                    <div class="post-heading">
-                        <div class="pull-left image">
-                            <img src="{{URL::asset('img/1.jpg')}}" class="img-circle avatar" alt="user profile image">
-                        </div>
-                        <div class="pull-left meta">
-                            <div class="title h5">
-                                <b>Ryan Haywood</b>
-                                made a post.
+            @foreach($reviews as $review)
+                <div class="col-xs-4">
+                    <div class="panel panel-white post panel-shadow" style="margin-bottom: 15px">
+                        <div class="post-heading">
+                            <div class="pull-left image">
+                                <img src="{{URL::asset('img/'.$review->user->id.'.jpg')}}" class="img-circle avatar" alt="user profile image">
                             </div>
-                            <h6 class="text-muted time">1 minute ago</h6>
+                            <div class="pull-left meta">
+                                <div class="title h5">
+                                    <b>{{$review->user->name}}</b>
+                                </div>
+                                <div class="rating reviewRating {{$review->id}}" id="rateYo" reviewId="{{$review->id}}" ratingValue="{{$review->rating}}"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="post-description">
-                        <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
+                        <div class="post-description">
+                            <p>{{str_limit($review->comment, 45)}}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="panel panel-white post panel-shadow" style="margin-bottom: 15px">
-                    <div class="post-heading">
-                        <div class="pull-left image">
-                            <img src="{{URL::asset('img/1.jpg')}}" class="img-circle avatar" alt="user profile image">
-                        </div>
-                        <div class="pull-left meta">
-                            <div class="title h5">
-                                <b>Ryan Haywood</b>
-                                made a post.
-                            </div>
-                            <h6 class="text-muted time">1 minute ago</h6>
-                        </div>
-                    </div>
-                    <div class="post-description">
-                        <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="panel panel-white post panel-shadow" style="margin-bottom: 15px">
-                    <div class="post-heading">
-                        <div class="pull-left image">
-                            <img src="{{URL::asset('img/1.jpg')}}" class="img-circle avatar" alt="user profile image">
-                        </div>
-                        <div class="pull-left meta">
-                            <div class="title h5">
-                                <b>Ryan Haywood</b>
-                                made a post.
-                            </div>
-                            <h6 class="text-muted time">1 minute ago</h6>
-                        </div>
-                    </div>
-                    <div class="post-description">
-                        <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="panel panel-white post panel-shadow" style="margin-bottom: 15px">
-                    <div class="post-heading">
-                        <div class="pull-left image">
-                            <img src="{{URL::asset('img/1.jpg')}}" class="img-circle avatar" alt="user profile image">
-                        </div>
-                        <div class="pull-left meta">
-                            <div class="title h5">
-                                <b>Ryan Haywood</b>
-                                made a post.
-                            </div>
-                            <h6 class="text-muted time">1 minute ago</h6>
-                        </div>
-                    </div>
-                    <div class="post-description">
-                        <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="panel panel-white post panel-shadow" style="margin-bottom: 15px">
-                    <div class="post-heading">
-                        <div class="pull-left image">
-                            <img src="{{URL::asset('img/1.jpg')}}" class="img-circle avatar" alt="user profile image">
-                        </div>
-                        <div class="pull-left meta">
-                            <div class="title h5">
-                                <b>Ryan Haywood</b>
-                                made a post.
-                            </div>
-                            <h6 class="text-muted time">1 minute ago</h6>
-                        </div>
-                    </div>
-                    <div class="post-description">
-                        <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="panel panel-white post panel-shadow" style="margin-bottom: 15px">
-                    <div class="post-heading">
-                        <div class="pull-left image">
-                            <img src="{{URL::asset('img/1.jpg')}}" class="img-circle avatar" alt="user profile image">
-                        </div>
-                        <div class="pull-left meta">
-                            <div class="title h5">
-                                <b>Ryan Haywood</b>
-                                made a post.
-                            </div>
-                            <h6 class="text-muted time">1 minute ago</h6>
-                        </div>
-                    </div>
-                    <div class="post-description">
-                        <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="panel panel-white post panel-shadow" style="margin-bottom: 15px">
-                    <div class="post-heading">
-                        <div class="pull-left image">
-                            <img src="{{URL::asset('img/1.jpg')}}" class="img-circle avatar" alt="user profile image">
-                        </div>
-                        <div class="pull-left meta">
-                            <div class="title h5">
-                                <b>Ryan Haywood</b>
-                                made a post.
-                            </div>
-                            <h6 class="text-muted time">1 minute ago</h6>
-                        </div>
-                    </div>
-                    <div class="post-description">
-                        <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="panel panel-white post panel-shadow" style="margin-bottom: 15px">
-                    <div class="post-heading">
-                        <div class="pull-left image">
-                            <img src="{{URL::asset('img/1.jpg')}}" class="img-circle avatar" alt="user profile image">
-                        </div>
-                        <div class="pull-left meta">
-                            <div class="title h5">
-                                <b>Ryan Haywood</b>
-                                made a post.
-                            </div>
-                            <h6 class="text-muted time">1 minute ago</h6>
-                        </div>
-                    </div>
-                    <div class="post-description">
-                        <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="panel panel-white post panel-shadow" style="margin-bottom: 15px">
-                    <div class="post-heading">
-                        <div class="pull-left image">
-                            <img src="{{URL::asset('img/1.jpg')}}" class="img-circle avatar" alt="user profile image">
-                        </div>
-                        <div class="pull-left meta">
-                            <div class="title h5">
-                                <b>Ryan Haywood</b>
-                                made a post.
-                            </div>
-                            <h6 class="text-muted time">1 minute ago</h6>
-                        </div>
-                    </div>
-                    <div class="post-description">
-                        <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="panel panel-white post panel-shadow" style="margin-bottom: 15px">
-                    <div class="post-heading">
-                        <div class="pull-left image">
-                            <img src="{{URL::asset('img/1.jpg')}}" class="img-circle avatar" alt="user profile image">
-                        </div>
-                        <div class="pull-left meta">
-                            <div class="title h5">
-                                <b>Ryan Haywood</b>
-                                made a post.
-                            </div>
-                            <h6 class="text-muted time">1 minute ago</h6>
-                        </div>
-                    </div>
-                    <div class="post-description">
-                        <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="panel panel-white post panel-shadow" style="margin-bottom: 15px">
-                    <div class="post-heading">
-                        <div class="pull-left image">
-                            <img src="{{URL::asset('img/1.jpg')}}" class="img-circle avatar" alt="user profile image">
-                        </div>
-                        <div class="pull-left meta">
-                            <div class="title h5">
-                                <b>Ryan Haywood</b>
-                                made a post.
-                            </div>
-                            <h6 class="text-muted time">1 minute ago</h6>
-                        </div>
-                    </div>
-                    <div class="post-description">
-                        <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="panel panel-white post panel-shadow" style="margin-bottom: 15px">
-                    <div class="post-heading">
-                        <div class="pull-left image">
-                            <img src="{{URL::asset('img/1.jpg')}}" class="img-circle avatar" alt="user profile image">
-                        </div>
-                        <div class="pull-left meta">
-                            <div class="title h5">
-                                <b>Ryan Haywood</b>
-                                made a post.
-                            </div>
-                            <h6 class="text-muted time">1 minute ago</h6>
-                        </div>
-                    </div>
-                    <div class="post-description">
-                        <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection

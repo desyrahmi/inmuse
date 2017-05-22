@@ -36,13 +36,13 @@ class UserController extends Controller
                 return redirect()->route('auth.register')
                     ->withErrors("Password miss matches");
             }
-            $check_username = User::where('username', '=', $request->input['username'])->first();
-            $check_email = User::where('email', '=', $request->input['email'])->first();
+            $check_username = User::where('username', '=', $request->username)->first();
+            $check_email = User::where('email', '=', $request->email)->first();
             if($check_username){
-                Session::flash('fail', 'Email sudah terdaftar.');
-                return redirect()->route('auth.register');
-            } elseif ($check_email){
                 Session::flash('fail', 'Username sudah terdaftar.');
+                return redirect()->route('auth.register');
+            } else if ($check_email){
+                Session::flash('fail', 'Email sudah terdaftar.');
                 return redirect()->route('auth.register');
             } else{
                 $user = new User();
@@ -61,7 +61,7 @@ class UserController extends Controller
                     $user->role = 'user';
                 }
                 if($user->save()){
-                    return redirect()->route('auth.index');
+                    return redirect()->route('index');
                 } else {
                     return redirect()->route('auth.register');
                 }
@@ -82,10 +82,6 @@ class UserController extends Controller
         return redirect()->route('user.show');
     }
 
-//    public function showProfile($id){
-//        $user = User::find($id);
-//        return view('profile', ['user' => $user]);
-//    }
     public function showProfile($username){
         $user = User::where('username', '=', $username)->first();
         return view('profile', ['user' => $user]);
@@ -99,7 +95,6 @@ class UserController extends Controller
 
     public function update(Request $request){
         $fields = array('name', 'phone', 'email', 'password');
-//        return dd($request);
         $user = User::find($request->id);
         forEach($fields as $field) {
             if ($request[$field]) {

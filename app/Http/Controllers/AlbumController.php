@@ -14,6 +14,11 @@ use Hash;
 
 class AlbumController extends Controller
 {
+    public function index(){
+        $albums = Album::paginate(10);
+        return view('listalbum',['albums' => $albums]);
+    }
+
     public function addIndex(){
         return view('form.addalbum');
     }
@@ -37,7 +42,6 @@ class AlbumController extends Controller
         $album->review = $request->review;
         $album->artist = $request->artist;
         $album->release = $request->release;
-//        return dd($album);
         $album->save();
 
         $file = $request->file('photoalbum');
@@ -54,11 +58,6 @@ class AlbumController extends Controller
             Session::flash('fail', 'Gagal menambahkan album');
             return redirect()->route('add.album.index');
         }
-    }
-
-    public function index(){
-        $albums = Album::get();
-        return view('listalbum',['albums' => $albums]);
     }
 
     public function delete($id){

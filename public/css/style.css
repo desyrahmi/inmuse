@@ -2600,6 +2600,7 @@ Component: timeline
 .skin-black .navbar {
   background-color: #1e1e1e;
   border-bottom: 1px solid #eee;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 .skin-black .navbar .nav a {
   color: #ffffff;
@@ -2891,6 +2892,7 @@ Component: timeline
 .view-button{
   align: center;
 }
+
 /*post*/
 .home-post:hover {
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
@@ -3438,7 +3440,9 @@ figure.effect-zoe:hover p.icon-links a:first-child {
   color: white;
 }
 /*end of modal*/
-
+hr {
+  border: 10px;
+}
 /*star rating*/
 
 /*end of star rating*/
