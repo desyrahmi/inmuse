@@ -7,11 +7,13 @@
 @endsection
 
 @section('content')
+    <br>
     <div class="row">
         <div class="col-xs-4">
             <div class="center-block">
                 <img src="{{URL::asset('img/album_'.$album->id .'.jpg')}}" alt="lala" width="250px" height="250px"/>
             </div>
+            <br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
         <div class="col-xs-8">
             <h4>{{$album->title}}</h4>
@@ -21,7 +23,7 @@
             <div class="tabbable">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#one" data-toggle="tab"> Overview</a></li>
-                    <li><a href="#two" data-toggle="tab">Best User Review</a></li>
+                    <li><a href="#two" data-toggle="tab">User Review</a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="one">
@@ -29,14 +31,23 @@
                         <p>{{$album->review}}</p>
                     </div>
                     <div class="tab-pane" id="two">
-                        <br>
-                        <p>
-                            Tale dolor mea ex, te enim assum suscipit cum, vix aliquid omittantur in. Duo eu cibo dolorum menandri, nam sumo dicit admodum ei. Ne mazim commune honestatis cum, mentitum phaedrum sit et.
-                        </p>
-                        <p>
-                            Tale dolor mea ex, te enim assum suscipit cum, vix aliquid omittantur in. Duo eu cibo dolorum menandri, nam sumo dicit admodum ei. Ne mazim commune honestatis cum, mentitum phaedrum sit et.
-                        </p>
-                        <br><br>
+                        <div class="row pb-cmnt-container">
+                            <div class="col-xs-12">
+                                <div class="panel panel-info">
+                                    <div class="panel-body">
+                                        <form action="{{route('add.review', ['id' => $album->id])}}" method="post">
+                                            {{csrf_field()}}
+                                            <input type="text" id="userRating" hidden value="0" name="rating">
+                                            <div class="userRatingInput" id="rateYo"></div>
+                                            <br>
+                                            <textarea style="width: 100%;" placeholder="Write your review here!" class="pb-cmnt-textarea" name="comment"></textarea>
+                                            <br>
+                                            <button class="btn btn-primary pull-right">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -63,23 +74,7 @@
         <div class="col-xs-1"></div>
         <div class="col-xs-7">
             <h4>Review</h4>
-            <div class="row pb-cmnt-container">
-                <div class="col-xs-12">
-                    <div class="panel panel-info">
-                        <div class="panel-body">
-                            <form action="{{route('add.review', ['id' => $album->id])}}" method="post">
-                                {{csrf_field()}}
-                                <input type="text" id="userRating" hidden value="0" name="rating">
-                                <div class="userRatingInput" id="rateYo"></div>
-                                <br>
-                                <textarea style="width: 100%;" placeholder="Write your review here!" class="pb-cmnt-textarea" name="comment"></textarea>
-                                <br>
-                                <button class="btn btn-primary pull-right">Submit</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
 
             @foreach($reviews as $review)
             <div class="panel panel-white post panel-shadow">
@@ -99,6 +94,7 @@
                 </div>
             </div>
             @endforeach
+            {{$reviews->render()}}
         </div>
         <div class="col-xs-1"></div>
     </div>

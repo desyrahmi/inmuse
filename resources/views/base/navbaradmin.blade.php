@@ -1,5 +1,5 @@
 <header class="header">
-    <a href="#" class="logo"><img src="img/logo-putih.png" width="60px" height="38px"></a>
+    <a href="{{route('index')}}" class="logo"><img src="{{URL::asset('img/logo-putih.png')}}" width="60px" height="38px"></a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->

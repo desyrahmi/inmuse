@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 use App\User;
 use App\Photo;
+use App\Review;
+use App\Album;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
@@ -12,6 +14,12 @@ use Hash;
 use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
+    public function index()
+    {
+        $users = User::paginate(10);
+        return view('listuser', ['users' => $users]);
+    }
+
     public function addIndex()
     {
         return view('form.adduser');
@@ -67,12 +75,6 @@ class UserController extends Controller
                 }
             }
         }
-    }
-
-    public function index()
-    {
-        $users = User::get();
-        return view('userlist', ['users' => $users]);
     }
 
     public function delete($id)

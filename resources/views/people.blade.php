@@ -19,9 +19,10 @@
                                 <img src="{{URL::asset('img/'.$review->user->id.'.jpg')}}" class="img-circle avatar" alt="user profile image">
                             </div>
                             <div class="pull-left meta">
-                                <div class="title h5">
+                                <div class="title h3">
                                     <b>{{$review->user->name}}</b>
                                 </div>
+                                <div class="text-info h5"><a href="{{route('album.detail', ['id' => $review->album->id])}}">{{$review->album->title}}</a></div>
                                 <div class="rating reviewRating {{$review->id}}" id="rateYo" reviewId="{{$review->id}}" ratingValue="{{$review->rating}}"></div>
                             </div>
                         </div>
@@ -31,6 +32,9 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+        <div class="text-center">
+            {{$reviews->render()}}
         </div>
     </div>
 @endsection

@@ -9,12 +9,13 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+
 Route::get('/', ['uses' => 'MainController@index', 'as' => 'index']);
 
-//Route::get('/album/1', ['uses' => 'MainController@showAlbum', 'as' => 'album.detail']);
 Route::get('/album/{id}', ['uses' => 'MainController@showAlbum', 'as' => 'album.detail']);
 Route::get('/discover', ['uses' => 'MainController@discover', 'as' => 'discover']);
 Route::get('/people', ['uses' => 'MainController@people', 'as' => 'people']);
+Route::get('/search', ['uses' => 'MainController@search', 'as' => 'search']);
 
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/login', ['uses' => 'AuthController@index', 'as' => 'auth.index']);
@@ -33,11 +34,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/add-album', ['uses' => 'AlbumController@create', 'as' => 'add.album']);
     Route::get('/delete-album/{id}', ['uses' => 'AlbumController@delete', 'as' => 'delete.album']);
     Route::post('/album/{id}/review', ['uses' => 'ReviewController@create', 'as' => 'add.review']);
+    Route::get('/list-review', ['uses' => 'ReviewController@index', 'as' => 'list.review']);
+    Route::get('/delete-review/{id}', ['uses' => 'ReviewController@delete', 'as' => 'delete.review']);
 
     Route::get('/list-song', ['uses' => 'SongController@index', 'as' => 'list.song']);
     Route::get('/add-song', ['uses' => 'SongController@addIndex', 'as' => 'add.song.index']);
     Route::post('/add-song', ['uses' => 'SongController@create', 'as' => 'add.song']);
     Route::get('/delete-song/{id}', ['uses' => 'SongController@delete', 'as' => 'delete.song']);
+
+    Route::get('/list-user', ['uses' => 'UserController@index', 'as' => 'list.user']);
 
     Route::get('/logout', ['uses' => 'AuthController@doLogout', 'as' => 'auth.doLogout']);
 

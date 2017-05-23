@@ -9,7 +9,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            List Album
+            List Review
             <small>Control panel</small>
         </h1>
         <br>
@@ -18,26 +18,30 @@
                 <table width="100%" class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th class="text-center">Title</th>
-                        <th class="text-center">Artist</th>
+                        <th class="text-center">No</th>
                         <th class="text-center">Album</th>
+                        <th class="text-center">User</th>
+                        <th class="text-center">Rating</th>
+                        <th class="text-center">Comment</th>
                         <th class="text-center">Menu</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($songs as $song)
+                    @foreach($reviews as $indexKey => $review)
                         <tr>
-                            <td>{{$song->title}}</td>
-                            <td>{{$song->album->artist}}</td>
-                            <td>{{$song->album->title}}</td>
-                            <td class="text-center"><a href="{{route('delete.song', ['id' => $song->id])}}" class="btn">Delete</a></td>
+                            <td>{{$indexKey+1}}</td>
+                            <td>{{$review->album->title}}</td>
+                            <td>{{$review->user->name}}</td>
+                            <td>{{$review->rating}}</td>
+                            <td>{{$review->comment}}</td>
+                            <td class="text-center"><a href="{{route('delete.review', ['id' => $review->id])}}" class="btn">Delete</a></td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
             </div>
             <div class="text-center">
-                {!! $songs->render() !!}
+                {!! $reviews->render() !!}
             </div>
         </div>
     </section>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Album;
+use App\Review;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -15,7 +16,7 @@ use Hash;
 class AlbumController extends Controller
 {
     public function index(){
-        $albums = Album::paginate(10);
+        $albums = Album::orderBy('artist', 'asc')->paginate(10);
         return view('listalbum',['albums' => $albums]);
     }
 

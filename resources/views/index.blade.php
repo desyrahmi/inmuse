@@ -19,7 +19,7 @@
                         </div>
                         <div class="post-meta">
                             <span class="date">{{$album->release}}</span>
-                            <span class="tags"><a href="#">{{ str_limit($album->artist, 20)}}</a></span>
+                            <span class="tags"><a href="#">{{str_limit($album->artist, 20)}}</a></span>
                         </div>
                         <div class="entry-content">
                             <h5><strong><a href="{{route('album.detail', ['id' => $album->id])}}">{{$album->title}}</a></strong></h5>

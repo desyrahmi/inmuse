@@ -52,7 +52,7 @@
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="#"><i class="fa fa-angle-double-right"></i> List Users</a></li>
+					<li><a href="{{route('list.user')}}"><i class="fa fa-angle-double-right"></i> List Users</a></li>
 					<li><a href="#"><i class="fa fa-angle-double-right"></i> Add User</a></li>
 				</ul>
 			</li>
@@ -70,9 +70,8 @@
 				</ul>
 			</li>
 			<li>
-				<a href="#">
+				<a href="{{route('list.review')}}">
 					<i class="fa fa-envelope"></i> <span>List Comment</span>
-					<small class="badge pull-right bg-yellow">12</small>
 				</a>
 			</li>
 		</ul>

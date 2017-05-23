@@ -18,8 +18,8 @@
                 <table width="100%" class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th class="text-center">Title</th>
                         <th class="text-center">Artist</th>
+                        <th class="text-center">Title</th>
                         <th class="text-center">Rating</th>
                         <th class="text-center">Menu</th>
                     </tr>
@@ -27,14 +27,16 @@
                     <tbody>
                     @foreach($albums as $album)
                         <tr>
-                            <td>{{$album->title}}</td>
                             <td>{{$album->artist}}</td>
+                            <td>{{$album->title}}</td>
                             <td>4.5</td>
                             <td class="text-center"><a href="{{route('delete.album', ['id' => $album->id])}}" class="btn">Delete</a></td>
                     </tr>
                     @endforeach
                     </tbody>
                 </table>
+            </div>
+            <div class="text-center">
                 {!! $albums->render() !!}
             </div>
         </div>

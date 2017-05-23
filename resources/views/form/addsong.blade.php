@@ -26,7 +26,7 @@
                         @endforeach
                 </select>
             </div>
-            <button type="submit" class="btn btn-default">Add Album</button>
+            <button type="submit" class="btn btn-default">Add Song</button>
             <button type="reset" class="btn btn-default" style="margin-left: 10px">Cancel</button>
         </form>
     </div>

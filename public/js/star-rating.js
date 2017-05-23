@@ -22,15 +22,17 @@ $(document).ready(function(){
 
         $(".ratingStar").rateYo({
             rating: Number($('.ratingStar').attr('avgRating')),
+            starWidth: "18px",
             readOnly: true
         });
-
         $(".userRatingInput").rateYo({
             rating: 0,
+            starWidth: "18px",
             fullStar: true,
             onSet: function (rating, rateYoInstance) {
                 $('#userRating').attr('value', rating);
             }
         });
+
     });
 });

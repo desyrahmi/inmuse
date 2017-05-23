@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Song;
 use App\Album;
+use App\Review;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;

@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
+    public function index(){
+        $reviews = Review::with('album')->with('user')->paginate(10);
+        return view('listreview', ['reviews' => $reviews]);
+    }
     public function create(Request $request){
         $rules = array(
             'comment' => 'required',
@@ -42,5 +46,10 @@ class ReviewController extends Controller
             Session::flash('fail', 'Gagal menambahkan review');
             return redirect()->route('album.detail', ['id' => $request->id]);
         }
+    }
+    public function delete($id){
+        $album = Review::find($id);
+        $album->delete();
+        return redirect()->route('list.review');
     }
 }

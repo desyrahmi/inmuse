@@ -9,12 +9,13 @@
     <div class="navbar-right col-xs-7">
         <div class="col-xs-2"></div>
         <div class="col-xs-4" style="margin-top: 5px;">
-            <form action="#" method="get" class="sidebar-form">
+            <form action="{{route('search')}}" method="get" class="sidebar-form">
+                {{--{{csrf_field()}}--}}
                 <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search..."/>
+                    <input type="text" name="search" class="form-control" placeholder="Search..."/>
                     <span class="input-group-btn">
-                            <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                        </span>
+                        <button type="submit" id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                    </span>
                 </div>
             </form>
         </div>
@@ -73,7 +74,6 @@
                                 <img src="{{URL::asset('img/'.Auth::user()->id.'.jpg')}}" class="img-circle" alt="User Image" />
                                 <p>
                                     {{Auth::user()->name}}
-                                    <small>Member since ...</small>
                                 </p>
                             </li>
                             <li class="user-footer">
